@@ -127,4 +127,4 @@ Inspired by real university systems, NotWSP reimagines a more intuitive and acce
 
 ## 🏁 Status
 
-✅ In development / Ready for defense
+In development
