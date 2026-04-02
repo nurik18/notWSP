@@ -98,9 +98,9 @@ ng serve
 
 ## 👥 Team Members
 
-* Student 1 — Frontend / UI
-* Student 2 — Backend / API
-* Student 3 — Integration / Testing
+* Tursyn Akhad — Frontend
+* Daulet Yerdos — Frontend
+* Tasbolat Nurdaulet — Backend
 
 ---
 
