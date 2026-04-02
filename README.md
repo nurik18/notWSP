@@ -1,4 +1,4 @@
-# 🎓 NotWSP — Student Portal System
+# NotWSP — Student Portal System
 
 NotWSP is a web application designed to help students manage their academic activities in one place.
 The system provides access to schedules, courses, grades, and assignments through a clean and user-friendly interface.
@@ -7,19 +7,19 @@ This project is inspired by existing university systems and represents an improv
 
 ---
 
-## 🚀 Features
+## Features
 
-* 🔐 JWT Authentication (Login / Logout)
-* 📚 View enrolled courses
-* 🗓️ Check weekly schedule
-* 📊 View grades by course
-* 📝 Manage assignments (CRUD)
-* 🔎 Filter and organize academic data
-* ⚠️ Error handling for API requests
+* JWT Authentication (Login / Logout)
+* View enrolled courses
+* Check weekly schedule
+* View grades by course
+* Manage assignments (CRUD)
+* Filter and organize academic data
+* Error handling for API requests
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 ### Frontend
 
@@ -38,7 +38,7 @@ This project is inspired by existing university systems and represents an improv
 
 ---
 
-## 🧩 Project Structure
+## Project Structure
 
 ### Backend Models
 
@@ -50,7 +50,7 @@ This project is inspired by existing university systems and represents an improv
 
 ---
 
-## 🔗 API Endpoints (examples)
+## API Endpoints (not accurate)
 
 * `POST /api/login/`
 * `POST /api/logout/`
@@ -64,7 +64,7 @@ This project is inspired by existing university systems and represents an improv
 
 ---
 
-## 🖥️ Frontend Pages
+## Frontend Pages
 
 * `/login` — User authentication
 * `/dashboard` — Overview of student data
@@ -75,28 +75,7 @@ This project is inspired by existing university systems and represents an improv
 
 ---
 
-## ⚙️ Setup Instructions
-
-### Backend
-
-```bash
-cd backend
-pip install -r requirements.txt
-python manage.py migrate
-python manage.py runserver
-```
-
-### Frontend
-
-```bash
-cd frontend
-npm install
-ng serve
-```
-
----
-
-## 👥 Team Members
+## Team Members
 
 * Tursyn Akhad — Frontend
 * Daulet Yerdos — Frontend
@@ -104,13 +83,13 @@ ng serve
 
 ---
 
-## 📌 Project Goal
+## Project Goal
 
 The goal of this project is to demonstrate full-stack development skills using Angular and Django REST Framework by building a functional and user-friendly student portal system.
 
 ---
 
-## 📎 Additional
+## Additional
 
 * Postman collection included in repository
 * All API requests tested
@@ -119,12 +98,12 @@ The goal of this project is to demonstrate full-stack development skills using A
 
 ---
 
-## 💡 Inspiration
+## Inspiration
 
 Inspired by real university systems, NotWSP reimagines a more intuitive and accessible student experience.
 
 ---
 
-## 🏁 Status
+## Status
 
 In development
