@@ -48,3 +48,70 @@ class Schedule(models.Model):
         return f'{self.course.title} — {self.get_day_display()} {self.start_time}'
 
 
+class Grade(models.Model):
+    """Оценка студента. ForeignKey на User и Course."""
+    student = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name='grades',
+        verbose_name='Студент'
+    )
+    course = models.ForeignKey(
+        Course,
+        on_delete=models.CASCADE,
+        related_name='grades',
+        verbose_name='Курс'
+    )
+    score = models.DecimalField(
+        max_digits=5,
+        decimal_places=2,
+        verbose_name='Оценка'
+    )
+    comment = models.TextField(blank=True, verbose_name='Комментарий')
+    graded_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name = 'Оценка'
+        verbose_name_plural = 'Оценки'
+
+    def __str__(self):
+        return f'{self.student.username} — {self.course.title}: {self.score}'
+
+
+class Assignment(models.Model):
+    """Задание. ForeignKey на Course и User (автор)."""
+    STATUS_CHOICES = [
+        ('pending', 'Ожидает выполнения'),
+        ('in_progress', 'В процессе'),
+        ('done', 'Выполнено'),
+    ]
+
+    course = models.ForeignKey(
+        Course,
+        on_delete=models.CASCADE,
+        related_name='assignments',
+        verbose_name='Курс'
+    )
+    author = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name='assignments',
+        verbose_name='Автор'
+    )
+    title = models.CharField(max_length=200, verbose_name='Название')
+    description = models.TextField(blank=True, verbose_name='Описание')
+    due_date = models.DateField(verbose_name='Срок сдачи')
+    status = models.CharField(
+        max_length=20,
+        choices=STATUS_CHOICES,
+        default='pending',
+        verbose_name='Статус'
+    )
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name = 'Задание'
+        verbose_name_plural = 'Задания'
+
+    def __str__(self):
+        return f'{self.title} ({self.course.title})'
