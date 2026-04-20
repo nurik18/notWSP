@@ -1,0 +1,30 @@
+<div class="page">
+  <div class="page-header">
+    <h2>Мои курсы</h2>
+    <!-- Click event: Load Courses -->
+    <button class="btn btn-primary" (click)="onLoadCourses()" [disabled]="isLoading">
+      {{ isLoading ? 'Загрузка...' : 'Загрузить курсы' }}
+    </button>
+  </div>
+
+  <!-- Ошибка -->
+  <div class="error-message" *ngIf="errorMessage">
+    {{ errorMessage }}
+  </div>
+
+  <!-- Пусто -->
+  <div class="empty-state" *ngIf="courses.length === 0 && !isLoading && !errorMessage">
+    Нажмите кнопку, чтобы загрузить курсы.
+  </div>
+
+  <!-- Список курсов с @for -->
+  <div class="cards-grid">
+    @for (course of courses; track course.id) {
+      <div class="card">
+        <div class="card-title">{{ course.name }}</div>
+        <div class="card-info">👨‍🏫 {{ course.teacher }}</div>
+        <div class="card-info">📚 {{ course.credits }} кредитов</div>
+      </div>
+    }
+  </div>
+</div>

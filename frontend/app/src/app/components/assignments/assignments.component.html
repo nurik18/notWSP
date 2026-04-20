@@ -1,0 +1,87 @@
+<div class="page">
+  <div class="page-header">
+    <h2>Задания</h2>
+    <button class="btn btn-secondary" (click)="onLoadAssignments()" [disabled]="isLoading">
+      🔄 Обновить
+    </button>
+  </div>
+
+  <!-- Сообщения -->
+  <div class="error-message" *ngIf="errorMessage">{{ errorMessage }}</div>
+  <div class="success-message" *ngIf="successMessage">{{ successMessage }}</div>
+
+  <!-- Форма создания / редактирования -->
+  <div class="form-card">
+    <h3>{{ editMode ? 'Редактировать задание' : 'Новое задание' }}</h3>
+
+    <div class="form-group">
+      <label>Название</label>
+      <!-- ngModel control №3 -->
+      <input type="text" [(ngModel)]="title" placeholder="Название задания" class="form-input" />
+    </div>
+
+    <div class="form-group">
+      <label>Описание</label>
+      <!-- ngModel control №4 -->
+      <textarea [(ngModel)]="description" placeholder="Описание задания" class="form-input" rows="3"></textarea>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label>Срок сдачи</label>
+        <!-- ngModel control №5 -->
+        <input type="date" [(ngModel)]="dueDate" class="form-input" />
+      </div>
+
+      <div class="form-group">
+        <label>ID курса</label>
+        <!-- ngModel control №6 -->
+        <input type="number" [(ngModel)]="courseId" class="form-input" min="1" />
+      </div>
+    </div>
+
+    <!-- @if для условного рендера кнопок -->
+    @if (editMode) {
+      <div class="form-buttons">
+        <!-- Click event: Save Edit -->
+        <button class="btn btn-primary" (click)="onSaveEdit()">💾 Сохранить</button>
+        <button class="btn btn-secondary" (click)="cancelEdit()">Отмена</button>
+      </div>
+    } @else {
+      <!-- Click event: Create Assignment -->
+      <button class="btn btn-primary" (click)="onCreateAssignment()">➕ Создать задание</button>
+    }
+  </div>
+
+  <!-- Список заданий -->
+  <div class="empty-state" *ngIf="assignments.length === 0 && !isLoading">
+    Нет заданий.
+  </div>
+
+  <div class="assignments-list">
+    @for (assignment of assignments; track assignment.id) {
+      <div class="assignment-card">
+        <div class="assignment-header">
+          <div class="assignment-title">{{ assignment.title }}</div>
+          <div class="assignment-actions">
+            <!-- Click event: Edit -->
+            <button class="btn btn-small btn-edit" (click)="onEditAssignment(assignment)">✏️</button>
+            <!-- Click event: Delete Assignment -->
+            <button class="btn btn-small btn-delete" (click)="onDeleteAssignment(assignment.id)">🗑️</button>
+          </div>
+        </div>
+        <div class="assignment-desc">{{ assignment.description }}</div>
+        <div class="assignment-meta">
+          @if (assignment.due_date) {
+            <span class="badge">📅 {{ assignment.due_date }}</span>
+          }
+          @if (assignment.is_completed) {
+            <span class="badge badge-done">✅ Выполнено</span>
+          } @else {
+            <span class="badge badge-pending">⏳ В работе</span>
+          }
+        </div>
+      </div>
+    }
+  </div>
+</div>

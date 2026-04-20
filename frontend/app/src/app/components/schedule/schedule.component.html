@@ -1,0 +1,41 @@
+<div class="page">
+  <div class="page-header">
+    <h2>Расписание</h2>
+    <!-- Click event: Load Schedule -->
+    <button class="btn btn-primary" (click)="onLoadSchedule()" [disabled]="isLoading">
+      {{ isLoading ? 'Загрузка...' : 'Загрузить расписание' }}
+    </button>
+  </div>
+
+  <div class="error-message" *ngIf="errorMessage">
+    {{ errorMessage }}
+  </div>
+
+  <div class="empty-state" *ngIf="schedule.length === 0 && !isLoading && !errorMessage">
+    Нажмите кнопку, чтобы загрузить расписание.
+  </div>
+
+  <!-- Таблица расписания -->
+  <div *ngIf="schedule.length > 0">
+    <table class="schedule-table">
+      <thead>
+      <tr>
+        <th>Курс</th>
+        <th>День</th>
+        <th>Время</th>
+        <th>Аудитория</th>
+      </tr>
+      </thead>
+      <tbody>
+        @for (item of schedule; track item.id) {
+          <tr>
+            <td>{{ item.course_name }}</td>
+            <td>{{ item.day }}</td>
+            <td>{{ item.time }}</td>
+            <td>{{ item.room }}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>
