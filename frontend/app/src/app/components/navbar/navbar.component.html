@@ -1,0 +1,13 @@
+<nav class="navbar">
+  <div class="navbar-brand">🎓 Студенческий портал</div>
+
+  <!-- Ссылки показываем только авторизованным пользователям -->
+  <div class="navbar-links" *ngIf="isLoggedIn()">
+    <a routerLink="/courses" routerLinkActive="active">Курсы</a>
+    <a routerLink="/schedule" routerLinkActive="active">Расписание</a>
+    <a routerLink="/grades" routerLinkActive="active">Оценки</a>
+    <a routerLink="/assignments" routerLinkActive="active">Задания</a>
+    <!-- Click event №1: Logout -->
+    <button class="btn btn-logout" (click)="onLogout()">Выйти</button>
+  </div>
+</nav>
