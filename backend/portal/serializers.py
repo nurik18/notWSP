@@ -52,3 +52,26 @@ class GradeSerializer(serializers.Serializer):
     def create(self, validated_data):
         return Grade.objects.create(**validated_data)
 
+class CourseModelSerializer(serializers.ModelSerializer):
+    """ModelSerializer для курсов."""
+    class Meta:
+        model = Course
+        fields = ['id', 'title', 'description', 'teacher', 'credits', 'created_at']
+        read_only_fields = ['created_at']
+
+
+class ScheduleModelSerializer(serializers.ModelSerializer):
+    """ModelSerializer для расписания."""
+    course_title = serializers.SerializerMethodField()
+    day_display = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Schedule
+        fields = ['id', 'course', 'course_title', 'day', 'day_display',
+                  'start_time', 'end_time', 'room']
+
+    def get_course_title(self, obj):
+        return obj.course.title
+
+    def get_day_display(self, obj):
+        return obj.get_day_display()
