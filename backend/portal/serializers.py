@@ -75,3 +75,21 @@ class ScheduleModelSerializer(serializers.ModelSerializer):
 
     def get_day_display(self, obj):
         return obj.get_day_display()
+    
+
+class AssignmentModelSerializer(serializers.ModelSerializer):
+    """ModelSerializer для заданий."""
+    author_username = serializers.SerializerMethodField()
+    course_title = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Assignment
+        fields = ['id', 'course', 'course_title', 'author', 'author_username',
+                  'title', 'description', 'due_date', 'status', 'created_at']
+        read_only_fields = ['author', 'created_at']
+
+    def get_author_username(self, obj):
+        return obj.author.username
+
+    def get_course_title(self, obj):
+        return obj.course.title
