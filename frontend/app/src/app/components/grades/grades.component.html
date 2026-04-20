@@ -1,0 +1,34 @@
+<div class="page">
+  <div class="page-header">
+    <h2>Мои оценки</h2>
+    <!-- Click event: Load Grades -->
+    <button class="btn btn-primary" (click)="onLoadGrades()" [disabled]="isLoading">
+      {{ isLoading ? 'Загрузка...' : 'Загрузить оценки' }}
+    </button>
+  </div>
+
+  <div class="error-message" *ngIf="errorMessage">
+    {{ errorMessage }}
+  </div>
+
+  <div class="empty-state" *ngIf="grades.length === 0 && !isLoading && !errorMessage">
+    Нажмите кнопку, чтобы загрузить оценки.
+  </div>
+
+  <div class="cards-grid">
+    @for (grade of grades; track grade.id) {
+      <div class="card">
+        <div class="card-title">{{ grade.course_name }}</div>
+        <!-- @if для условного рендера -->
+        @if (grade.grade) {
+          <div class="grade-badge" [ngClass]="getGradeClass(grade.grade)">
+            {{ grade.grade }}
+          </div>
+        } @else {
+          <div class="grade-badge grade-none">Нет оценки</div>
+        }
+        <div class="card-date">📅 {{ grade.date }}</div>
+      </div>
+    }
+  </div>
+</div>

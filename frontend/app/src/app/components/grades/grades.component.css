@@ -1,0 +1,100 @@
+.page {
+  padding: 8px 0;
+}
+
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.page-header h2 {
+  margin: 0;
+  color: #2c3e50;
+  font-size: 22px;
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.card {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.08);
+  text-align: center;
+}
+
+.card-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 12px;
+}
+
+.grade-badge {
+  display: inline-block;
+  font-size: 24px;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 50px;
+  margin-bottom: 12px;
+}
+
+.grade-excellent { background-color: #d5f5e3; color: #1e8449; }
+.grade-good      { background-color: #d6eaf8; color: #1a5276; }
+.grade-satisfactory { background-color: #fef9e7; color: #7d6608; }
+.grade-fail      { background-color: #fde8e8; color: #922b21; }
+.grade-none      { background-color: #f2f3f4; color: #999; font-size: 14px; }
+
+.card-date {
+  font-size: 13px;
+  color: #999;
+}
+
+.btn {
+  padding: 9px 18px;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-primary {
+  background-color: #3498db;
+  color: white;
+}
+
+.btn-primary:hover:not([disabled]) {
+  background-color: #2980b9;
+}
+
+.btn-primary[disabled] {
+  background-color: #95a5a6;
+  cursor: not-allowed;
+}
+
+.error-message {
+  background-color: #fde8e8;
+  color: #c0392b;
+  padding: 10px 14px;
+  border-radius: 4px;
+  margin-bottom: 16px;
+  font-size: 14px;
+  border-left: 3px solid #e74c3c;
+}
+
+.empty-state {
+  color: #999;
+  font-size: 14px;
+  padding: 40px;
+  text-align: center;
+  background: white;
+  border-radius: 8px;
+  border: 2px dashed #ddd;
+}
